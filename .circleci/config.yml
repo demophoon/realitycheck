@@ -68,6 +68,7 @@ jobs:
           sleep $SLEEP
           date
           echo 'Done sleeping.'
+          exit 1
     environment:
       SLEEP: 1
 
