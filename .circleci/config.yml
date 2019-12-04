@@ -76,6 +76,13 @@ jobs:
     <<: *windows_defaults
     steps:
       - run: systeminfo
+      - run: "echo 'hello world' > ~/test.txt"
+
+      - run: "env"
+
+      - store_artifacts:
+          path: "~/test.txt"
+          destination: "test.txt"
 
   remote_docker:
     <<: *remote_docker_defaults
@@ -212,7 +219,8 @@ workflows:
       - remote_docker
       - docker_layer_caching
       - machine_dlc
-      - windows
+      - windows:
+          context: org-global
 
   feature_jobs:
     jobs:
